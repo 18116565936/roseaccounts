@@ -23,7 +23,9 @@ public class CalculationsTest {
             "Travel","chongqing",800f, LocalDate.of(2019,7,9));
     private List<AccountItem> accountList = new ArrayList<AccountItem>();
 
-    public CalculationsTest(){
+
+    @Before
+    public void setAccountListet(){
         accountList.add(accountItem001);
         accountList.add(accountItem002);
         accountList.add(accountItem003);
@@ -34,7 +36,6 @@ public class CalculationsTest {
     @Test
     public void should_calcuate_totalSpending(){
         float sum =Calculations.totalSpending(9,accountList);
-//        System.out.print(sum);
         assertThat(sum).isEqualTo(77.8f);
     }
 
@@ -43,7 +44,6 @@ public class CalculationsTest {
     @Test
     public void should_calcuate_totalIncome(){
         float sum =Calculations.totalIncome(11,accountList);
-//        System.out.print(sum);
         assertThat(sum).isEqualTo(433.0f);
     }
 
