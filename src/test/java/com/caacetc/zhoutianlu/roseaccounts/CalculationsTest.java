@@ -15,12 +15,12 @@ public class CalculationsTest {
     private AccountType income = AccountType.Income;
     private AccountRecord accountRecord001 = new AccountRecord(spending,"Rose",
             "Shopping","apple",19.8f, LocalDate.of(2019,9,19));
-    private AccountRecord accountRecord002 = new AccountRecord(spending,"Rose",
-            "Shopping","clothes",199f, LocalDate.of(2019,8,14));
+    private AccountRecord accountRecord002 = new AccountRecord(income,"Rose",
+            "Allowance","living allowances",199f, LocalDate.of(2019,9,14));
     private AccountRecord accountRecord003 = new AccountRecord(spending,"Rose",
-            "Shopping","pen",58f, LocalDate.of(2019,9,29));
+            "Shopping","pen",10f, LocalDate.of(2019,9,29));
     private AccountRecord accountRecord004 = new AccountRecord(income,"Rose",
-            "Travel","chengdu",433f, LocalDate.of(2019,11,15));
+            "Allowance","Travel allowances ",433f, LocalDate.of(2019,11,15));
     private AccountRecord accountRecord005 = new AccountRecord(spending,"Rose",
             "Travel","chongqing",800f, LocalDate.of(2019,7,9));
     private List<AccountRecord> accountList = new ArrayList<AccountRecord>();
@@ -38,7 +38,7 @@ public class CalculationsTest {
     @Test
     public void should_calculate_the_totalSpending_of_september(){
         float sum =Calculations.totalSpending(9);
-        assertThat(sum).isEqualTo(77.8f);
+        assertThat(sum).isEqualTo(29.8f);
     }
 
 
@@ -52,7 +52,7 @@ public class CalculationsTest {
     @Test
     public void should_calculate_the_Profit_of_september(){
         float sum =Calculations.Profit(9);
-        assertThat(sum).isEqualTo(-77.8f);
+        assertThat(sum).isEqualTo(169.2f);
     }
 
     @Test
