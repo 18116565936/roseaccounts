@@ -11,50 +11,52 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
 public class CalculationsTest {
-    private AccountItem accountItem001 = new AccountItem("Spending","Rose",
+    private AccountType spending = AccountType.Spending;
+    private AccountType income = AccountType.Income;
+    private AccountRecord accountRecord001 = new AccountRecord(spending,"Rose",
             "Shopping","apple",19.8f, LocalDate.of(2019,9,19));
-    private AccountItem accountItem002 = new AccountItem("Spending","Rose",
+    private AccountRecord accountRecord002 = new AccountRecord(spending,"Rose",
             "Shopping","clothes",199f, LocalDate.of(2019,8,14));
-    private AccountItem accountItem003 = new AccountItem("Spending","Rose",
+    private AccountRecord accountRecord003 = new AccountRecord(spending,"Rose",
             "Shopping","pen",58f, LocalDate.of(2019,9,29));
-    private AccountItem accountItem004 = new AccountItem("Income","Rose",
+    private AccountRecord accountRecord004 = new AccountRecord(income,"Rose",
             "Travel","chengdu",433f, LocalDate.of(2019,11,15));
-    private AccountItem accountItem005 = new AccountItem("Spending","Rose",
+    private AccountRecord accountRecord005 = new AccountRecord(spending,"Rose",
             "Travel","chongqing",800f, LocalDate.of(2019,7,9));
-    private List<AccountItem> accountList = new ArrayList<AccountItem>();
+    private List<AccountRecord> accountList = new ArrayList<AccountRecord>();
 
 
     @Before
-    public void setAccountListet(){
-        accountList.add(accountItem001);
-        accountList.add(accountItem002);
-        accountList.add(accountItem003);
-        accountList.add(accountItem004);
-        accountList.add(accountItem005);
+    public void setAccountRecords(){
+        Calculations.add(accountRecord001);
+        Calculations.add(accountRecord002);
+        Calculations.add(accountRecord003);
+        Calculations.add(accountRecord004);
+        Calculations.add(accountRecord005);
     }
 
     @Test
-    public void should_calcuate_totalSpending(){
-        float sum =Calculations.totalSpending(9,accountList);
+    public void should_calculate_the_totalSpending_of_september(){
+        float sum =Calculations.totalSpending(9);
         assertThat(sum).isEqualTo(77.8f);
     }
 
 
 
     @Test
-    public void should_calcuate_totalIncome(){
-        float sum =Calculations.totalIncome(11,accountList);
+    public void should_calculate_the_totalIncome_of_november(){
+        float sum =Calculations.totalIncome(11);
         assertThat(sum).isEqualTo(433.0f);
     }
 
     @Test
-    public void should_calcuate_Profit(){
-        float sum =Calculations.Profit(9,accountList);
+    public void should_calculate_the_Profit_of_september(){
+        float sum =Calculations.Profit(9);
         assertThat(sum).isEqualTo(-77.8f);
     }
 
     @Test
-    public void should_showMessage(){
-        Calculations.showMessage(9,accountList);
+    public void should_showMessage_of_september(){
+        Calculations.showMessage(9);
     }
 }

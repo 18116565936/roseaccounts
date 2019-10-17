@@ -7,15 +7,15 @@
 //
 //
 //public class MainAccount{
-//    private AccountItem accountItem001 = new AccountItem("Spengding","Rose",
+//    private AccountRecord accountItem001 = new AccountRecord("Spengding","Rose",
 //            "Shopping","apple",19.8f, LocalDate.of(2019,9,19));
-//    private AccountItem accountItem002 = new AccountItem("Spengding","Rose",
+//    private AccountRecord accountItem002 = new AccountRecord("Spengding","Rose",
 //            "Shopping","clothes",199f, LocalDate.of(2019,8,14));
-//    private AccountItem accountItem003 = new AccountItem("Spengding","Rose",
+//    private AccountRecord accountItem003 = new AccountRecord("Spengding","Rose",
 //            "Shopping","pen",58f, LocalDate.of(2019,9,29));
-//    private AccountItem accountItem004 = new AccountItem("Spengding","Rose",
+//    private AccountRecord accountItem004 = new AccountRecord("Spengding","Rose",
 //            "Travel","chengdu",433f, LocalDate.of(2019,11,15));
-//    private AccountItem accountItem005 = new AccountItem("Spengding","Rose",
+//    private AccountRecord accountItem005 = new AccountRecord("Spengding","Rose",
 //            "Travel","chongqing",800f, LocalDate.of(2019,7,9));
 //
 //    public static void main(String[] args) {

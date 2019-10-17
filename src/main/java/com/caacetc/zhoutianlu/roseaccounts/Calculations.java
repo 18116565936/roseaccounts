@@ -1,49 +1,49 @@
 package com.caacetc.zhoutianlu.roseaccounts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Calculations {
+    private static List<AccountRecord> accountRecords= new ArrayList();
 
+    public static void add(AccountRecord accountRecord){
+        accountRecords.add(accountRecord);
+    }
 
-    public static float totalSpending(int month, List<AccountItem> accountList) {
+    public static void addAll(List<AccountRecord> accountList){
+        accountRecords.addAll(accountList);
+    }
+
+    public static float totalSpending(int month) {
         float sum = 0f;
-        for (AccountItem accountItem : accountList) {
-            if ((accountItem.getOccuredTime().getMonthValue() == month) &&( accountItem.getCategory() == "Spending")) {
-                sum += accountItem.getAmount();
+        for (AccountRecord accountRecord : accountRecords) {
+            if ((accountRecord.getRecordTime().getMonthValue() == month) &&( accountRecord.getAccountType() == AccountType.Spending)) {
+                sum += accountRecord.getAmount();
             }
         }
         return sum;
     }
 
-    public static float totalIncome(int month, List<AccountItem> accountList) {
+    public static float totalIncome(int month) {
         float sum = 0f;
-        for (AccountItem accountItem : accountList) {
-            if (accountItem.getOccuredTime().getMonthValue() == month && accountItem.getCategory() == "Income") {
-                sum += accountItem.getAmount();
+        for (AccountRecord accountRecord : accountRecords) {
+            if (accountRecord.getRecordTime().getMonthValue() == month && accountRecord.getAccountType()==AccountType.Income ) {
+                sum += accountRecord.getAmount();
             }
         }
         return sum;
     }
 
-    public static float Profit(int month, List<AccountItem> accountList) {
+    public static float Profit(int month) {
         float sum = 0f;
-        for (AccountItem accountItem : accountList) {
-            if (accountItem.getOccuredTime().getMonthValue() == month && accountItem.getCategory() == "Income") {
-                sum += accountItem.getAmount();
-            }
-        }
-        for (AccountItem accountItem : accountList) {
-            if (accountItem.getOccuredTime().getMonthValue() == month && accountItem.getCategory() == "Spending") {
-                sum -= accountItem.getAmount();
-            }
-        }
+        sum = totalIncome(month) - totalSpending(month);
         return sum;
     }
 
-    public static void showMessage(int month, List<AccountItem> accountList) {
-        for (AccountItem accountItem : accountList) {
-            if (accountItem.getOccuredTime().getMonthValue() == month) {
-                System.out.print(accountItem);
+    public static void showMessage(int month) {
+        for (AccountRecord accountRecord : accountRecords) {
+            if (accountRecord.getRecordTime().getMonthValue() == month) {
+                System.out.print(accountRecord);
             }
         }
     }
