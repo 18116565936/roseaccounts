@@ -1,8 +1,11 @@
 package com.caacetc.zhoutianlu.roseaccounts;
 
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
+@Data
 public class AccountRecord {
     private String AccountName;//账本名称
     private String ContentType;//账目内容类型
@@ -21,29 +24,6 @@ public class AccountRecord {
         this.RecordTime = recordTime;
     }
 
-    public AccountType getAccountType() {
-        return AccountType;
-    }
-
-    public String getAccountName() {
-        return AccountName;
-    }
-
-    public String getContentType() {
-        return ContentType;
-    }
-
-    public String getNote() {
-        return Note;
-    }
-
-    public float getAmount() {
-        return Amount;
-    }
-
-    public LocalDate getRecordTime() {
-        return RecordTime;
-    }
     @Override
     public String toString(){
         return String.format("账目名称：%s;\n账目类型: %s;\n账目内容: %s;\n" +
