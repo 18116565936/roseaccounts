@@ -11,3 +11,4 @@ target/
 .project
 .settings/
 .classpath
+/src/main/resources/
