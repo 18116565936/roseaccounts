@@ -1,12 +1,7 @@
 package com.caacetc.zhoutianlu.roseaccounts;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
@@ -23,8 +18,6 @@ public class CalculationsTest {
             "Allowance","Travel allowances ",433f, LocalDate.of(2019,11,15));
     private AccountRecord accountRecord005 = new AccountRecord(spending,"Rose",
             "Travel","chongqing",800f, LocalDate.of(2019,7,9));
-    private List<AccountRecord> accountList = new ArrayList<AccountRecord>();
-
 
     @Before
     public void setAccountRecords(){
@@ -40,8 +33,6 @@ public class CalculationsTest {
         float sum =Calculations.totalSpending(9);
         assertThat(sum).isEqualTo(29.8f);
     }
-
-
 
     @Test
     public void should_calculate_the_totalIncome_of_november(){
