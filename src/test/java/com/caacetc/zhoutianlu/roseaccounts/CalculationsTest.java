@@ -20,29 +20,30 @@ public class CalculationsTest {
             "Travel","chongqing",800f, LocalDate.of(2019,7,9));
 
     @Before
-    public void setAccountRecords(){
+    public void setup(){
         Calculations.add(accountRecord001);
         Calculations.add(accountRecord002);
         Calculations.add(accountRecord003);
         Calculations.add(accountRecord004);
         Calculations.add(accountRecord005);
     }
+    //基本除了测试方法以外其他方法差不多都是private
 
     @Test
     public void should_calculate_the_totalSpending_of_september(){
-        float sum =Calculations.totalSpending(9);
+        float sum =Calculations.totalSpendingByMonth(9);
         assertThat(sum).isEqualTo(29.8f);
     }
 
     @Test
     public void should_calculate_the_totalIncome_of_november(){
-        float sum =Calculations.totalIncome(11);
+        float sum =Calculations.totalIncomeByMonth(11);
         assertThat(sum).isEqualTo(433.0f);
     }
 
     @Test
     public void should_calculate_the_Profit_of_september(){
-        float sum =Calculations.Profit(9);
+        float sum =Calculations.totalProfitByMonth(9);
         assertThat(sum).isEqualTo(169.2f);
     }
 
