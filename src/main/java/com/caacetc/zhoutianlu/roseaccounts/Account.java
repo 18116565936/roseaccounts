@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public abstract class Account {
-    private List<AccountRecord> accountRecords= new ArrayList();
+    protected List<AccountRecord> accountRecords= new ArrayList();
 
     public void add(AccountRecord accountRecord){
         accountRecords.add(accountRecord);
@@ -17,11 +17,11 @@ public abstract class Account {
         accountRecords.addAll(accountList);
     }
 
-    public abstract BigDecimal profitByMonth(int date);
+    public abstract BigDecimal profitByMonth(int month);
 
-    public abstract BigDecimal totalIncomeByMonth(int date);
+    public abstract BigDecimal totalIncomeByMonth(int month);
 
-    public abstract BigDecimal totalSpendingByMonth(int date);
+    public abstract BigDecimal totalSpendingByMonth(int month);
 
     public List<AccountRecord> allIncomeRecords() {
         return accountRecordsBy(accountRecord -> accountRecord.isIncome());
@@ -31,8 +31,8 @@ public abstract class Account {
         return accountRecordsBy(accountRecord -> accountRecord.isSpending());
     }
 
-    public List<AccountRecord> accountRecordsByMonth(int date) {
-        return accountRecords.stream().filter(M ->M.getRecordTime().getMonthValue()==date).collect(Collectors.toList());
+    public List<AccountRecord> accountRecordsByMonth(int month) {
+        return accountRecordsBy(M ->M.getRecordTime().getMonthValue()==month);
     }
 
     private List<AccountRecord> accountRecordsBy(Predicate<AccountRecord> predicate) {

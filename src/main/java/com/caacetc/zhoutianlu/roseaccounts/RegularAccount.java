@@ -1,28 +1,25 @@
 package com.caacetc.zhoutianlu.roseaccounts;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 
-public class RegularAccount extends Account{
-    private List<AccountRecord> accountRecords= new ArrayList();
+public class RegularAccount extends Account {
 
     @Override
-    public  BigDecimal profitByMonth(int date){
-        return totalIncomeByMonth(date).subtract(totalSpendingByMonth(date));
+    public BigDecimal profitByMonth(int month) {
+        return totalIncomeByMonth(month).subtract(totalSpendingByMonth(month));
     }
 
     @Override
-    public  BigDecimal totalIncomeByMonth(int date){
-        return calculateBy(preMonth ->preMonth.getRecordTime().getMonthValue() == date,
-                         preAccountType ->preAccountType.isIncome());
+    public BigDecimal totalIncomeByMonth(int month) {
+        return calculateBy(preMonth -> preMonth.getRecordTime().getMonthValue() == month,
+                preAccountType -> preAccountType.isIncome());
     }
 
     @Override
-    public BigDecimal totalSpendingByMonth(int date){
-        return calculateBy(preMonth ->preMonth.getRecordTime().getMonthValue() == date,
-                          preAccountType ->preAccountType.isSpending());
+    public BigDecimal totalSpendingByMonth(int month) {
+        return calculateBy(preMonth -> preMonth.getRecordTime().getMonthValue() == month,
+                preAccountType -> preAccountType.isSpending());
     }
 
     public void showMessage(int month) {
@@ -40,7 +37,7 @@ public class RegularAccount extends Account{
         return accountRecords.stream()
                 .filter(predicateMonth)
                 .filter(predicateAccountType)
-                .map(obj->obj.getAmount())
-                .reduce(BigDecimal.ZERO,(a,b)->a.add(b));
+                .map(obj -> obj.getAmount())
+                .reduce(BigDecimal.ZERO, (a, b) -> a.add(b));
     }
 }
