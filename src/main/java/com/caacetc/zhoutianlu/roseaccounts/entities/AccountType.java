@@ -1,4 +1,4 @@
-package com.caacetc.zhoutianlu.roseaccounts;
+package com.caacetc.zhoutianlu.roseaccounts.entities;
 
 public enum AccountType {
     Spending("Spending"),

@@ -1,5 +1,8 @@
 package com.caacetc.zhoutianlu.roseaccounts;
 
+import com.caacetc.zhoutianlu.roseaccounts.application.AccountRecordApp;
+import com.caacetc.zhoutianlu.roseaccounts.entities.Account;
+import com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecord;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,14 +11,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.caacetc.zhoutianlu.roseaccounts.AccountType.Income;
-import static com.caacetc.zhoutianlu.roseaccounts.AccountType.Spending;
+import static com.caacetc.zhoutianlu.roseaccounts.entities.AccountType.Income;
+import static com.caacetc.zhoutianlu.roseaccounts.entities.AccountType.Spending;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class RegularAccountTest{
     private List<AccountRecord> accountRecords = new ArrayList<>();
-    private Account account = new RegularAccount();
-
+//    private Account account = new RegularAccount();
+    private Account account = new AccountRecordApp();
 
     @Before
     public void setUp(){

@@ -1,4 +1,4 @@
-package com.caacetc.zhoutianlu.roseaccounts;
+package com.caacetc.zhoutianlu.roseaccounts.entities;
 
 
 import java.math.BigDecimal;
@@ -13,8 +13,8 @@ public class AccountRecord {
     private LocalDate recordTime;//记录时间
     private AccountType accountType;//账目类型
 
-    AccountRecord(AccountType accountType, String accountName, String contentType,
-                  String note, BigDecimal amount, LocalDate recordTime){
+    public AccountRecord(AccountType accountType, String accountName, String contentType,
+                         String note, BigDecimal amount, LocalDate recordTime){
         this.accountType = accountType;
         this.accountName = accountName;
         this.contentType = contentType;
@@ -28,10 +28,6 @@ public class AccountRecord {
         return amount;
     }
 
-    public AccountType getAccountType() {
-        return accountType;
-    }
-
     public LocalDate getRecordTime() {
         return recordTime;
     }
@@ -43,8 +39,6 @@ public class AccountRecord {
     public boolean isSpending() {
         return accountType == accountType.Spending;
     }
-
-
 
     @Override
     public String toString(){

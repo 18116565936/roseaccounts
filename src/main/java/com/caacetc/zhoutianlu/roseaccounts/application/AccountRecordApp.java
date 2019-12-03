@@ -1,9 +1,20 @@
-package com.caacetc.zhoutianlu.roseaccounts;
+package com.caacetc.zhoutianlu.roseaccounts.application;
+
+
+import com.caacetc.zhoutianlu.roseaccounts.entities.Account;
+import com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecord;
+import com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecordMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.function.Predicate;
 
-public class RegularAccount extends Account {
+@Repository
+public class AccountRecordApp extends Account {
+    @Autowired
+    private AccountRecordMapper mapper;
 
     @Override
     public BigDecimal profitByMonth(int month) {
@@ -22,19 +33,17 @@ public class RegularAccount extends Account {
                 preAccountType -> preAccountType.isSpending());
     }
 
-    public void showMessage(int month) {
-        for (AccountRecord accountRecord : accountRecords) {
-            if (accountRecord.getRecordTime().getMonthValue() == month) {
-                System.out.print(accountRecord);
-            }
-        }
+    public List<AccountRecord> allRecords(){
+        return  mapper.queryAllRecords();
     }
+
+    public void addRecord(AccountRecord record){mapper.addRecord(record);}
 
     private BigDecimal calculateBy(Predicate<AccountRecord> predicateMonth, Predicate<AccountRecord> predicateAccountType) {
         if (predicateMonth == null && predicateAccountType == null) {
             System.out.print("*** There have no accountRecord in this month  ***");
         }
-        return accountRecords.stream()
+        return mapper.queryAllRecords().stream()
                 .filter(predicateMonth)
                 .filter(predicateAccountType)
                 .map(obj -> obj.getAmount())
