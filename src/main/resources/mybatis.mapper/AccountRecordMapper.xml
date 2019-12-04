@@ -3,11 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecordMapper">
-    <select id="queryAllRecords" resultType="AccountRecord">
+  <!--
+  namespace:名称空间，指向想映射的mapper文件；
+  id：唯一标志，mapper接口中的方法名
+  -->
+    <select id="queryAllRecords" resultType="com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecord">
         select * from AccountRecord
     </select>
 
-    <insert id="addRecord" parameterType="AccountRecord">
+    <insert id="addRecord" parameterType="com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecord">
         insert into AccountRecord values
         (#{accountName}, #{accountType}, #{contentType},#{note},#{amount},#{recordTime})
     </insert>

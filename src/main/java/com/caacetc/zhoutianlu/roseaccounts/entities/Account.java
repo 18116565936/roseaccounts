@@ -1,11 +1,14 @@
 package com.caacetc.zhoutianlu.roseaccounts.entities;
 
+import org.springframework.stereotype.Repository;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@Repository
 public abstract class Account {
     protected List<AccountRecord> accountRecords= new ArrayList();
 

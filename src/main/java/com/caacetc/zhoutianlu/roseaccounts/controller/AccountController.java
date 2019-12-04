@@ -3,10 +3,12 @@ package com.caacetc.zhoutianlu.roseaccounts.controller;
 import com.caacetc.zhoutianlu.roseaccounts.application.AccountRecordApp;
 import com.caacetc.zhoutianlu.roseaccounts.entities.AccountRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@RestController
 public class AccountController {
     @Autowired
     private AccountRecordApp accountRecordApp;
